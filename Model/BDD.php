@@ -55,6 +55,7 @@ function tancarBDD($connexio){
 
 /**
  * Summary of crearUsuari
+ *  Aquesta funcio
  * @param
  * @return
  */
