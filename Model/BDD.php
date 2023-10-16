@@ -55,9 +55,11 @@ function tancarBDD($connexio){
 
 /**
  * Summary of crearUsuari
- *  Aquesta funcio
- * @param
- * @return
+ *  Aquesta funcio serveix per crear l'usuari a la base de dades amb la password ja encripatada d'abans.
+ * @param String $nom 
+ * @param String $correu
+ * @param String $password encriptada en enregistrarse.php
+ * @return void
  */
 function crearUsuari($nom,$correu,$password){
   $conexio=obrirBDD();
