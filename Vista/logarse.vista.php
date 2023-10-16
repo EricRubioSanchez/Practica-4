@@ -18,5 +18,30 @@
 			<li class="logs"><a href="../Vista/enregistrarse.vista.php">Enregistrar-se</a></li>
 		</ul>
 	</nav>
+	<form action="../Controlador/enregistrarse.php" method="post">
+            <label><h1>Logarse</h1></label>
+            <br>
+            <label>Correu electronic:
+                <input type="email" name="correu" maxlength="30" minlength="4" required value="<?php if(isset($correu)){echo $correu;}?>">
+            </label>
+            <br>
+            <label>Contrasenya:
+                <input type="password" name="password" required value="<?php if(isset($password)){echo $password;}?>">
+            </label>
+            <br>
+            <?php if (!empty($errors)):?>
+                <div><?php
+                    echo "<p class='errors'>".$errors."</p>";
+                    ?>
+                </div>
+            <?php endif ?>
+            <?php if (!empty($correcte)):?>
+                <div><?php
+                    echo "<p class='correcte'>".$correcte."</p>";
+                    ?>
+                </div>
+            <?php endif ?>
+            <input type="submit" value="Enviar">
+        </form>
 </body>
 </html>
