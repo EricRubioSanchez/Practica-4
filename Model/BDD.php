@@ -72,4 +72,22 @@ function crearUsuari($nom,$correu,$password){
       $conexio=tancarBDD($conexio);
     }
 }
+
+/**
+ * Summary of existeixUsuari
+ *  si existeix l'usuari no fa res si no existeix retorna un exception
+ * @param String $correu
+ * @return void
+ */
+function existeixUsuari($correu){
+$conexio=obrirBDD();
+if(!is_null($conexio)){
+  $setencia = "SELECT COUNT(*) FROM `usuaris` WHERE correu = :correu;";
+  $array=array(':correu' => $correu);
+
+  $result=executarSentencia($setencia,$array,$conexio);
+  if(($result[0]['COUNT(*)'])==0){throw new Exception("L'usuari no existeix a la base de dades.");}
+  $conexio=tancarBDD($conexio);
+}
+}
 ?>

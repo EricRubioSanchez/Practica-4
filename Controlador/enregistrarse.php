@@ -2,6 +2,15 @@
 //Eric Rubio Sanchez
 require_once("../Model/BDD.php");
 
+/**
+ * Summary of validarDades
+ *      Aqui comprovem que les dades introduides siguin correctes.
+ * @param String $nom nom de conte
+ * @param String $correu el correu del usuari.
+ * @param String $password la contrasenya del usuari.
+ * @param String $password2 la contrasenya que l'usuari ha de tornar a introduir per comrpbar que no s'hagi equivocat.
+ * @return String retorna un string de errors separats per <br>
+ */
 function validarDades($nom,$correu,$password,$password2){
     $errors="";
     if(empty($nom)){
@@ -27,7 +36,12 @@ function validarDades($nom,$correu,$password,$password2){
 /*action="<?php echo $_SERVER["PHP_SELF"];?>"id= "form"*/    
 }
 
-//Aquesta funcio serveix per evitar l'injeccio de codi treient els espais, les '\' i convertint els caracters especial en entitats HTML.
+/**
+ * Summary of tractarDades
+ *  Aquesta funcio serveix per evitar l'injeccio de codi treient els espais, les '\' i convertint els caracters especial en entitats HTML.
+ * @param String $data demana la dada sense tractar
+ * @return String retorna la dada tractada
+ */
 function tractarDades($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -48,8 +62,8 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
 
     if($errors==""){
         $correcte="Totes les dades son correctes";
-        $password = hash('sha512',$password);
-        try{crearUsuari($nom,$correu,$password);
+        $passwordENC = hash('sha512',$password);
+        try{crearUsuari($nom,$correu,$passwordENC);
             $correcte.="Usuari Afegit";}
         catch(PDOException $e){
             echo $e;

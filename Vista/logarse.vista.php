@@ -18,7 +18,7 @@
 			<li class="logs"><a href="../Vista/enregistrarse.vista.php">Enregistrar-se</a></li>
 		</ul>
 	</nav>
-	<form action="../Controlador/enregistrarse.php" method="post">
+	<form action="../Controlador/logarse.php" method="post">
             <label><h1>Logarse</h1></label>
             <br>
             <label>Correu electronic:
