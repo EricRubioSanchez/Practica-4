@@ -1,6 +1,7 @@
 <?php 
 //Eric Rubio Sanchez
 require_once("../Model/BDD.php");
+require_once("../Controlador/session.php");
 
 /**
  * Summary of validarDades
@@ -23,18 +24,7 @@ function validarDades($correu,$password){
 /*action="<?php echo $_SERVER["PHP_SELF"];?>"id= "form"*/    
 }
 
-/**
- * Summary of tractarDades
- *  Aquesta funcio serveix per evitar l'injeccio de codi treient els espais, les '\' i convertint els caracters especial en entitats HTML.
- * @param String $data demana la dada sense tractar
- * @return String retorna la dada tractada
- */
-function tractarDades($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+
 
 if ($_SERVER["REQUEST_METHOD"]=="POST"){
     //Agafem les variables del formulari i les enviem a una funcio del controlador en la que tartem d'evitar l'injeccio de codi.
@@ -48,14 +38,15 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
 
     if($errors==""){
         $correcte="Totes les dades son correctes <br>";
-        $passwordENC = hash('sha512',$password);
         try{existeixUsuari($correu);
             $correcte.="Usuari trobat a la base de dades.";
             try{
-                //iniciarSessio
-            }
+                if(comprovarContrasenya($correu,$password)){
+                iniciarSession($correu);
+            }}
             catch(Exception $e){
-                $errors.= "No s'ha pogut iniciar la sessió.<br>";
+                echo($e);
+                $errors.= "Contrasenya incorrecte.<br>";
             }
         }catch(Exception $e){
             $errors.= "L'Usuari no existeix a la base de dades.<br>";;

@@ -187,7 +187,6 @@ function mostrarPerPagina(){
         }
     }
 }
-
 require_once '../Vista/index.vista.php';
 
 ?>

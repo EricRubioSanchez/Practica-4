@@ -1,6 +1,7 @@
 <?php 
 //Eric Rubio Sanchez
 require_once("../Model/BDD.php");
+require_once("../Controlador/session.php");
 
 /**
  * Summary of validarDades
@@ -36,18 +37,6 @@ function validarDades($nom,$correu,$password,$password2){
 /*action="<?php echo $_SERVER["PHP_SELF"];?>"id= "form"*/    
 }
 
-/**
- * Summary of tractarDades
- *  Aquesta funcio serveix per evitar l'injeccio de codi treient els espais, les '\' i convertint els caracters especial en entitats HTML.
- * @param String $data demana la dada sense tractar
- * @return String retorna la dada tractada
- */
-function tractarDades($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
 
 if ($_SERVER["REQUEST_METHOD"]=="POST"){
     //Agafem les variables del formulari i les enviem a una funcio del controlador en la que tartem d'evitar l'injeccio de codi.
@@ -62,11 +51,11 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
 
     if($errors==""){
         $correcte="Totes les dades son correctes";
-        $passwordENC = hash('sha512',$password);
+        $passwordENC = password_hash($password,PASSWORD_BCRYPT);
+        echo($passwordENC);
         try{crearUsuari($nom,$correu,$passwordENC);
             $correcte.="Usuari Afegit";}
         catch(PDOException $e){
-            echo $e;
             $errors.="Aquest correu ja existeix a la base de dades.";
         }
         

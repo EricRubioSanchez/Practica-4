@@ -90,4 +90,19 @@ if(!is_null($conexio)){
   $conexio=tancarBDD($conexio);
 }
 }
+
+function comprovarContrasenya($usuari,$password){
+  $conexio=obrirBDD();
+  if(!is_null($conexio)){
+    $setencia="SELECT contrasenya FROM `usuaris` WHERE correu=:correu;";
+    $array=array(':correu' => $usuari);
+  
+    $result=executarSentencia($setencia,$array,$conexio);
+    if(empty($result)){throw new Exception("La contrasenya no es la mateixa");}
+    if(password_verify($password,$result[0]["contrasenya"])){return true;}
+    $conexio=tancarBDD($conexio);
+  }
+
+}
+
 ?>
