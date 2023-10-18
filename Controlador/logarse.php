@@ -47,17 +47,18 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     $correcte="";
 
     if($errors==""){
-        $correcte="Totes les dades son correctes";
+        $correcte="Totes les dades son correctes <br>";
         $passwordENC = hash('sha512',$password);
         try{existeixUsuari($correu);
+            $correcte.="Usuari trobat a la base de dades.";
             try{
                 //iniciarSessio
             }
             catch(Exception $e){
-                $errors.= $e;
+                $errors.= "No s'ha pogut iniciar la sessió.<br>";
             }
         }catch(Exception $e){
-            $errors.= $e;
+            $errors.= "L'Usuari no existeix a la base de dades.<br>";;
         }
         
         

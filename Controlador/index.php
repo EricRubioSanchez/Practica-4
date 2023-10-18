@@ -152,27 +152,33 @@ function mostrarPerPagina(){
     $nArticlesPerPagina = getnArticlesPerPagina();
     $articlesPerPagina="";
     if(!is_null($conexio)){
-
+        /*
+        for ($i=0; $i <$nArticlesPerPagina ; $i++) {         
+            $setencia="SELECT a.id, a.article,u.nom FROM articles a JOIN usuaris u ON a.id_usuari = u.Id WHERE a.id =:id ";
+            $array=array(':id' =>  ($nPagina * $nArticlesPerPagina)-($i));
+        */
         try{
-            $setencia = "SELECT * FROM articles WHERE id BETWEEN :id1 AND :id2 ;";
-            $array=array(':id1' =>  ($nPagina * $nArticlesPerPagina)-($nArticlesPerPagina-1),':id2' => ($nPagina * $nArticlesPerPagina));
-
+            $setencia="SELECT a.id, a.article,u.nom FROM articles a JOIN usuaris u ON a.id_usuari = u.Id";
+            $array=array();
             $result=executarSentencia($setencia,$array,$conexio);
-
             $conexio=tancarBDD($conexio);
-
-            //Creacio del text HTML
             $articlesPerPagina.="<ul>";
+            $result=array_slice($result,($nPagina*$nArticlesPerPagina-$nArticlesPerPagina),($nArticlesPerPagina));
+            //Creacio del text HTML
             foreach ($result as $article) {
                 foreach($article as $key => $value) {
                     if ($key=="id") {
                         $articlesPerPagina.="<li>".$value;
                     }
                     else if($key=="article"){
-                        $articlesPerPagina.=".- ".$value."</li>";
+                        $articlesPerPagina.=".- ".$value;
                     }
-                  }
+                    else if($key=="nom"){
+                        $articlesPerPagina.="<br> Autor: ".$value."</li>";
+                    }
+                }
             }
+            
             $articlesPerPagina.="</ul>";
             return $articlesPerPagina;
         }catch(PDOException $e){
@@ -182,6 +188,6 @@ function mostrarPerPagina(){
     }
 }
 
-
+require_once '../Vista/index.vista.php';
 
 ?>
