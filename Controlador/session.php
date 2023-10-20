@@ -13,7 +13,11 @@ function tractarDades($data) {
 }
 
 /**
- * 
+ * Summary of iniciarSession
+ *  Inicialitza les variables newsession i nom.
+ * @param String $usuari el correu electronic que utilitzem com id.
+ * @param String $nom el nom del usuari
+ * @return void
  */
 function iniciarSession($usuari,$nom){
     session_start();

@@ -97,6 +97,14 @@ if(!is_null($conexio)){
 }
 }
 
+
+/**
+ * Summary of comprovarContrasenya
+ * comprovem si la contrasenya que han ficat en el login es la mateixa que la de la base de dades.
+ * @param String $usuari el correu del usuari.
+ * @param String $password la contrasenya sense encriptar.
+ * @return void
+ */
 function comprovarContrasenya($usuari,$password){
   $conexio=obrirBDD();
   if(!is_null($conexio)){
