@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">  
-	<link rel="stylesheet" href="../Vista/estils.css"> <!-- feu referència al vostre fitxer d'estils -->
+	<link rel="stylesheet" href="../Estils/estils.css"> <!-- feu referència al vostre fitxer d'estils -->
 	<title>Articles</title>
 </head>
 <body>
@@ -15,8 +15,11 @@
 		<ul>
 			<li class="active"><a href="../Vista/index.vista.php">Articles</a></li>
 			<?php if( isset( $_SESSION['newsession'])):?>
+				<li><a href="../Vista/index.vista.php">Inserir</a></li>
+				<li><a href="../Vista/index.vista.php">Modificar</a></li>
+				<li><a href="../Vista/index.vista.php">Esborrar</a></li>
 				<li class="logs"><a href="../Controlador/logout.php">Sortir</a></li>
-				<li class="logs"><?php echo($_SESSION['nom'] );?></li>
+				<li class="logs"><?php echo("Hola, ".$_SESSION['nom'] );?></li>
 			<?php else: ?>
 				<li class="logs"><a href="../Vista/logarse.vista.php">Logar-se</a></li>
 				<li class="logs"><a href="../Vista/enregistrarse.vista.php">Enregistrar-se</a></li>

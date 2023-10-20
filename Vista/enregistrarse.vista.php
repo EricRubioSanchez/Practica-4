@@ -5,8 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">  
-	<link rel="stylesheet" href="../Vista/estils.css"> <!-- feu referència al vostre fitxer d'estils -->
-    <link rel="stylesheet" href="../Vista/estilForms.css"> <!-- feu referència al vostre fitxer d'estils -->
+	<link rel="stylesheet" href="../Estils/estils.css"> <!-- feu referència al vostre fitxer d'estils -->
+    <link rel="stylesheet" href="../Estils/estilForms.css"> <!-- feu referència al vostre fitxer d'estils -->
 	<title>Registrar</title>
 </head>
 <body>

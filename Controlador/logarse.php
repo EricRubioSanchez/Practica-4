@@ -43,9 +43,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
             try{
                 if(comprovarContrasenya($correu,$password)){
                 iniciarSession($correu,$nom);
-            }}
+            }else{$errors.= "Contrasenya incorrecte.<br>";}
+            }
             catch(Exception $e){
-                echo($e);
                 $errors.= "Contrasenya incorrecte.<br>";
             }
         }catch(Exception $e){
