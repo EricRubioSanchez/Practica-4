@@ -87,7 +87,13 @@ if(!is_null($conexio)){
 
   $result=executarSentencia($setencia,$array,$conexio);
   if(($result[0]['COUNT(*)'])==0){throw new Exception("L'usuari no existeix a la base de dades.");}
+  
+  $setencia = "SELECT nom FROM `usuaris` WHERE correu = :correu;";
+  $array=array(':correu' => $correu);
+  $result=executarSentencia($setencia,$array,$conexio);
+
   $conexio=tancarBDD($conexio);
+  return $result[0]['nom'];
 }
 }
 

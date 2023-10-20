@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Summary of tractarDades
  *  Aquesta funcio serveix per evitar l'injeccio de codi treient els espais, les '\' i convertint els caracters especial en entitats HTML.
@@ -16,18 +15,13 @@ function tractarDades($data) {
 /**
  * 
  */
-function iniciarSession($usuari){
+function iniciarSession($usuari,$nom){
     session_start();
     $_SESSION["newsession"]=$usuari;
-    echo $_SESSION["newsession"];
+    $_SESSION["nom"]=$nom;
+    header("Location: ../Vista/index.vista.php");
+                exit();
 
-}
-
-/**
- * 
- */
-function tancarSession($usuari){
-    unset($_SESSION[$usuari]);
 }
 
 ?>

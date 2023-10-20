@@ -38,11 +38,11 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
 
     if($errors==""){
         $correcte="Totes les dades son correctes <br>";
-        try{existeixUsuari($correu);
+        try{$nom=existeixUsuari($correu);
             $correcte.="Usuari trobat a la base de dades.";
             try{
                 if(comprovarContrasenya($correu,$password)){
-                iniciarSession($correu);
+                iniciarSession($correu,$nom);
             }}
             catch(Exception $e){
                 echo($e);

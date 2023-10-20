@@ -52,9 +52,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     if($errors==""){
         $correcte="Totes les dades son correctes";
         $passwordENC = password_hash($password,PASSWORD_BCRYPT);
-        echo($passwordENC);
         try{crearUsuari($nom,$correu,$passwordENC);
-            $correcte.="Usuari Afegit";}
+            $correcte.="<br> Usuari Afegit";
+            iniciarSession($correu,$nom);}
         catch(PDOException $e){
             $errors.="Aquest correu ja existeix a la base de dades.";
         }

@@ -9,12 +9,18 @@
 	<title>Articles</title>
 </head>
 <body>
-	<?php include_once'../Controlador/index.php' ?>
+	<?php include_once'../Controlador/index.php';
+	session_start();?>
 	<nav>
 		<ul>
- 			<li class="active"><a href="../Vista/index.vista.php">Articles</a></li>
-  			<li class="logs"><a href="../Vista/logarse.vista.php">Logar-se</a></li>
-			<li class="logs"><a href="../Vista/enregistrarse.vista.php">Enregistrar-se</a></li>
+			<li class="active"><a href="../Vista/index.vista.php">Articles</a></li>
+			<?php if( isset( $_SESSION['newsession'])):?>
+				<li class="logs"><a href="../Controlador/logout.php">Sortir</a></li>
+				<li class="logs"><?php echo($_SESSION['nom'] );?></li>
+			<?php else: ?>
+				<li class="logs"><a href="../Vista/logarse.vista.php">Logar-se</a></li>
+				<li class="logs"><a href="../Vista/enregistrarse.vista.php">Enregistrar-se</a></li>
+            <?php endif; ?>
 		</ul>
 	</nav>
 	<div class="contenidor">
