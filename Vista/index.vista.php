@@ -15,9 +15,9 @@
 		<ul>
 			<li class="active"><a href="../Vista/index.vista.php">Articles</a></li>
 			<?php if( isset( $_SESSION['newsession'])):?>
-				<li><a href="../Vista/index.vista.php">Inserir</a></li>
-				<li><a href="../Vista/index.vista.php">Modificar</a></li>
-				<li><a href="../Vista/esborrar.vista.php">Esborrar</a></li>
+				<li ><a href="../Vista/inserir.vista.php">Inserir</a></li>
+				<li><a href="../Vista/modificar.vista.php">Modificar</a></li>
+				<li ><a href="../Vista/esborrar.vista.php">Esborrar</a></li>
 				<li class="logs"><a href="../Controlador/logout.php">Sortir</a></li>
 				<li class="logs"><?php echo("Hola, ".$_SESSION['nom'] );?></li>
 			<?php else: ?>

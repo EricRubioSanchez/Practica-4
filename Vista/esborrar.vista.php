@@ -20,14 +20,11 @@
 		<ul>
 			<li ><a href="../Vista/index.vista.php">Articles</a></li>
 			<?php if( isset( $_SESSION['newsession'])):?>
-				<li><a href="../Vista/index.vista.php">Inserir</a></li>
-				<li><a href="../Vista/index.vista.php">Modificar</a></li>
-				<li class="active"><a href="../Vista/index.vista.php">Esborrar</a></li>
+				<li ><a href="../Vista/inserir.vista.php">Inserir</a></li>
+				<li><a href="../Vista/modificar.vista.php">Modificar</a></li>
+				<li class="active"><a href="../Vista/esborrar.vista.php">Esborrar</a></li>
 				<li class="logs"><a href="../Controlador/logout.php">Sortir</a></li>
 				<li class="logs"><?php echo("Hola, ".$_SESSION['nom'] );?></li>
-			<?php else: ?>
-				<li class="logs"><a href="../Vista/logarse.vista.php">Logar-se</a></li>
-				<li class="logs"><a href="../Vista/enregistrarse.vista.php">Enregistrar-se</a></li>
             <?php endif; ?>
 		</ul>
 	</nav>
@@ -36,7 +33,7 @@
         <h1 class="box">Esborrar</h1>
         </div>
         <div class="principalBox">
-            <form action="../Controlador/Esborrar.php" method="post">
+            <form action="../Controlador/esborrar.php" method="post">
                 <br>
                 <label>
                     ID Article:<input type="text" name="id_article" required value="<?php if(isset($idArticle)){echo $idArticle;}?>">
