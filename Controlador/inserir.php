@@ -32,7 +32,6 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
         try{crearArticle($article);
             $correcte.="<br> Article Afegit";}
         catch(PDOException $e){
-            echo($e);
             $errors.="Error amb la conexió a la base de dades.";
         }
         

@@ -119,11 +119,17 @@ function comprovarContrasenya($usuari,$password){
 
 }
 
+/**
+ * Summary of crearArticle
+ *  Agafa la id en la primera sentencia i en la segona crea l'article.
+ * @param String $article
+ * @return void
+ */
 function crearArticle($article){
   $conexio=obrirBDD();
   session_start();
   $_SESSION['newsession'];
-  if(!is_null($conexio)){//SELECT id FROM `usuaris` WHERE correu='e.rubio@sapalomera.cat'
+  if(!is_null($conexio)){
     $setencia = "SELECT id FROM usuaris WHERE correu=:correu";
     $array=array(':correu' => $_SESSION['newsession']);
     $result=executarSentencia($setencia,$array,$conexio);
@@ -134,6 +140,46 @@ function crearArticle($article){
     $result=executarSentencia($setencia,$array,$conexio);
     $conexio=tancarBDD($conexio);
   }
+}
+
+/**
+ * Summary of autentificacioArticleUsuari
+ *  Comprova que l'article sigui del usuari logat.
+ * @param string $idArticle
+ * @return boolean Si l'article es del usuari retorna true en cas contrari retorna false.
+ */
+function autentificacioArticleUsuari($idArticle){
+  $conexio=obrirBDD();
+  session_start();
+  $_SESSION['newsession'];
+  if(!is_null($conexio)){
+    //agafa la id del usuari a partir del correu.
+    $setencia = "SELECT id FROM usuaris WHERE correu=:correu";
+    $array=array(':correu' => $_SESSION['newsession']);
+    $result=executarSentencia($setencia,$array,$conexio);
+
+
+    //comproba que el article sigui del usuari.
+    $setencia = "SELECT COUNT(*) FROM articles WHERE id_usuari=:id_usuari AND id=:id ";
+    $array=array(':id_usuari' => $result[0]["id"],':id' => $idArticle);
+    $result=executarSentencia($setencia,$array,$conexio);
+    $conexio=tancarBDD($conexio);
+    if(($result[0]['COUNT(*)'])==0){return false;}
+    return true;
+  }
+}
+
+/**
+ * Summary of esborrarArticle
+ * @param string $idArticle
+ * @return void
+ */
+function esborrarArticle($idArticle){
+  $conexio=obrirBDD();
+  $setencia = "DELETE FROM articles WHERE id=:id";
+  $array=array(':id' => $idArticle);
+  $result=executarSentencia($setencia,$array,$conexio);
+  $conexio=tancarBDD($conexio); 
 }
 
 ?>

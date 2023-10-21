@@ -10,7 +10,7 @@
     <title>Modificar</title>
 </head>
 <body>
-    <?php session_start(); ?>
+    <?php if( !isset( $_SESSION['newsession'])){session_start();} ?>
     <!-- Retorna a la pagina de articles si es tanca la sessió -->
     <?php if( !isset( $_SESSION['newsession'])){
 	    header("Location: ../Vista/index.vista.php");
