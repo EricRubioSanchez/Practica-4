@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">  
     <link rel="stylesheet" type="text/css" href="../Estils/estils.css">
     <link rel="stylesheet" type="text/css" href="../Estils/estilForms.css">
-    <title>Esborrar</title>
+    <title>Modificar</title>
 </head>
 <body>
     <?php session_start(); ?>
@@ -20,8 +20,8 @@
 		<ul>
 			<li ><a href="../Vista/index.vista.php">Articles</a></li>
 			<?php if( isset( $_SESSION['newsession'])):?>
-				<li class="active"><a href="../Vista/inserir.vista.php">Inserir</a></li>
-				<li><a href="../Vista/modificar.vista.php">Modificar</a></li>
+				<li ><a href="../Vista/inserir.vista.php">Inserir</a></li>
+				<li class="active"><a href="../Vista/modificar.vista.php">Modificar</a></li>
 				<li ><a href="../Vista/esborrar.vista.php">Esborrar</a></li>
 				<li class="logs"><a href="../Controlador/logout.php">Sortir</a></li>
 				<li class="logs"><?php echo("Hola, ".$_SESSION['nom'] );?></li>
@@ -40,7 +40,7 @@
                 </label>
                 <br>
                 <label>
-                    Article:<input type="text" name="article" required value="<?php if(isset($idArticle)){echo $idArticle;}?>">
+                    Article:<input type="text" name="article" maxlength="50" minlength="3" required value="<?php if(isset($article)){echo $article;}?>">
                 </label>
                 <br>
                 <?php if (!empty($errors)):?>

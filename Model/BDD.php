@@ -119,4 +119,21 @@ function comprovarContrasenya($usuari,$password){
 
 }
 
+function crearArticle($article){
+  $conexio=obrirBDD();
+  session_start();
+  $_SESSION['newsession'];
+  if(!is_null($conexio)){//SELECT id FROM `usuaris` WHERE correu='e.rubio@sapalomera.cat'
+    $setencia = "SELECT id FROM usuaris WHERE correu=:correu";
+    $array=array(':correu' => $_SESSION['newsession']);
+    $result=executarSentencia($setencia,$array,$conexio);
+
+    $setencia = "INSERT INTO articles (article, id_usuari) VALUES (:article, :id)";
+    $array=array(':article' => $article, ':id' => $result[0]["id"]);
+
+    $result=executarSentencia($setencia,$array,$conexio);
+    $conexio=tancarBDD($conexio);
+  }
+}
+
 ?>

@@ -1,4 +1,5 @@
 <?php
+//Eric Rubio Sanchez
 /**
  * Summary of tractarDades
  *  Aquesta funcio serveix per evitar l'injeccio de codi treient els espais, les '\' i convertint els caracters especial en entitats HTML.
