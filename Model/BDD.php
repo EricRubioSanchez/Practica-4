@@ -182,4 +182,18 @@ function esborrarArticle($idArticle){
   $conexio=tancarBDD($conexio); 
 }
 
+/**
+ * Summary of modificarArticle
+ * @param string $idArticle
+ * @param string $article
+ * @return void
+ */
+function modificarArticle($idArticle,$article){
+  $conexio=obrirBDD();
+  $setencia = "UPDATE articles SET article = :article WHERE id = :id;";
+  $array=array(':article' => $article,':id' => $idArticle);
+  $result=executarSentencia($setencia,$array,$conexio);
+  $conexio=tancarBDD($conexio); 
+}
+
 ?>

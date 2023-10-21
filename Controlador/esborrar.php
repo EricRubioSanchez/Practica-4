@@ -6,7 +6,7 @@ require_once("../Controlador/session.php");
 /**
  * Summary of validarDades
  *      Aqui comprovem que les dades introduides siguin correctes.
- * @param String $article contingut del article.
+ * @param String $idArticle id del article.
  * @return String retorna un string de errors separats per <br>
  */
 function validarDades($idArticle){
