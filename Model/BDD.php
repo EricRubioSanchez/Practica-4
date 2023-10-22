@@ -196,4 +196,20 @@ function modificarArticle($idArticle,$article){
   $conexio=tancarBDD($conexio); 
 }
 
+
+/**
+ * Summary of desencriptarPassword
+ * @param string $idArticle
+ * @param string $article
+ * @return void
+ */
+function cambiarContrasenya($correu,$password){
+  $conexio=obrirBDD();
+  $setencia = "UPDATE usuaris SET contrasenya = :contrasenya WHERE correu = :correu ;";
+  $array=array(':contrasenya' => $password,':correu' => $correu);
+  $result=executarSentencia($setencia,$array,$conexio);
+  $conexio=tancarBDD($conexio); 
+  
+}
+
 ?>
