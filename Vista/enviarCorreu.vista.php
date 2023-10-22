@@ -7,7 +7,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">  
 	<link rel="stylesheet" href="../Estils/estils.css"> <!-- feu referència al vostre fitxer d'estils -->
     <link rel="stylesheet" href="../Estils/estilForms.css"> <!-- feu referència al vostre fitxer d'estils -->
-	<title>Log-IN</title>
+	<title>Recuperar Contrasenya</title>
 </head>
 <body>
     <nav>

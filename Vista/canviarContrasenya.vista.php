@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet">  
     <link rel="stylesheet" type="text/css" href="../Estils/estils.css">
     <link rel="stylesheet" type="text/css" href="../Estils/estilForms.css">
-    <title>Inserir</title>
+    <title>Canviar Contrasenya</title>
 </head>
 <body>
     <?php if( !isset( $_SESSION['newsession'])){session_start();} ?>
@@ -20,24 +20,32 @@
 		<ul>
 			<li ><a href="../Vista/index.vista.php">Articles</a></li>
 			<?php if( isset( $_SESSION['newsession'])):?>
-				<li class="active"><a href="../Vista/inserir.vista.php">Inserir</a></li>
+				<li ><a href="../Vista/inserir.vista.php">Inserir</a></li>
 				<li><a href="../Vista/modificar.vista.php">Modificar</a></li>
 				<li ><a href="../Vista/esborrar.vista.php">Esborrar</a></li>
 				<li class="logs"><a href="../Controlador/logout.php">Sortir</a></li>
-                <li class="logs"><a href="../Vista/canviarContrasenya.vista.php">Canviar Contrasenya</a></li>
+                <li class="logs active"><a href="../Vista/canviarContrasenya.vista.php">Canviar Contrasenya</a></li>
 				<li class="logs"><?php echo("Hola, ".$_SESSION['nom'] );?></li>
             <?php endif; ?>
 		</ul>
 	</nav>
     <div class="container">
         <div>
-        <h1 class="box">Inserir</h1>
+        <h1 class="box">Canviar Contrasenya</h1>
         </div>
         <div class="principalBox">
-            <form action="../Controlador/inserir.php" method="post">
+            <form action="../Controlador/canviarContrasenya.php" method="post">
                 <br>
-                <label>
-                    Article:<input type="text" name="article" maxlength="50" minlength="3" required value="<?php if(isset($article)){echo $article;}?>">
+                <label>Nova contrasenya:
+                    <input type="password" name="password" required value="<?php if(isset($password)){echo $password;}?>">
+                </label>
+                <br>
+                <label> Torna a introduir la nova contrasenya
+                    <input type="password" name="password2" required value="<?php if(isset($password2)){echo $password2;}?>">
+                </label>
+                <br>
+                <label> Contrasenya Antiga
+                    <input type="password" name="oldpassword" required value="<?php if(isset($oldpassword)){echo $oldpassword;}?>">
                 </label>
                 <br>
                 <?php if (!empty($errors)):?>
@@ -54,7 +62,7 @@
                 <?php endif ?>
                 <br>
                 <div>
-                    <input type="submit" value="Enviar" onclick="return confirm('Estàs segur que vols inserir?')">
+                    <input type="submit" value="Enviar" onclick="return confirm('Estàs segur?')">
                 </div>
             </form>
                 

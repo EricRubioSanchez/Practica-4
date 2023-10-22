@@ -39,13 +39,14 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
         try{$nom=existeixUsuari($correu);
             $correcte.="Usuari trobat a la base de dades.<br>";
             try{
-                //pillar contraseña
-                cambiarContrasenya($correu,password_hash("1234",PASSWORD_BCRYPT));
+                //No es pot desencriptar la contrasenya guardada a la base de dades pel tipus d'encriptació
+                //Així que li assigno 1234 de contrasenya i que quan entri la canviï. 
+                canviarContrasenya($correu,password_hash("1234",PASSWORD_BCRYPT));
                 enviarcorreuPHPMailer($correu,"1234");
                 $correcte.="Correu Enviat";
             }
             catch(Exception $e){
-                $errors.= "Contrasenya incorrecte.<br>";
+                $errors.= "Error amb la conexió.<br>";
             }
         }catch(Exception $e){
             $errors.= "L'Usuari no existeix a la base de dades.<br>";

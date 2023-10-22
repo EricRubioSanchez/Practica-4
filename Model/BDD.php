@@ -198,12 +198,12 @@ function modificarArticle($idArticle,$article){
 
 
 /**
- * Summary of desencriptarPassword
- * @param string $idArticle
- * @param string $article
+ * Summary of canviarContrasenya
+ * @param string $correu
+ * @param string $password
  * @return void
  */
-function cambiarContrasenya($correu,$password){
+function canviarContrasenya($correu,$password){
   $conexio=obrirBDD();
   $setencia = "UPDATE usuaris SET contrasenya = :contrasenya WHERE correu = :correu ;";
   $array=array(':contrasenya' => $password,':correu' => $correu);
